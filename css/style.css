@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+    background-color:  aquamarine;
+    font-family: monospace;
+}
+
+button{
+    background: none;
+    border: none;
+    color: darkgray;
+}
+
+.wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.music-interface{
+    position: relative;
+    width: 14rem;
+}
+
+.music-play{
+    background-color: white;
+    border-radius: 0.7rem 0.7rem 0 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    padding-left: 3rem;
+    margin-left: 3rem;
+    opacity: 0.75;
+    width: 6rem;
+    transition: ;
+}
+
+.progress{
+    width: 6rem;
+    height: 3px;
+    background-color:white;
+}
+
+.bar{
+    height: 100%;
+    width: 90%;
+    background-color:cornflowerblue;
+}
+
+.music-img{
+    width: 4rem;
+    border-radius: 50%;
+    border: 2px skyblue solid;
+}
+
+.music-disc{
+    position: absolute;
+    top: -2rem;
+    left: 0.5rem;
+    animation: rotate 5s ease-in-out;
+}
+
+.music-buttons{
+    position: relative;
+    display: flex;
+    align-items:center;
+    justify-content:flex-end;
+    background-color:khaki;
+    padding: 1rem;
+    width: 12rem;
+    border-radius: 0.7rem;
+}
+
+.music-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    color: darkgray;
+}
+
+.music-nav i:hover{
+    cursor: pointer;
+}
+
+.fa-backward,
+.fa-forward{
+    font-size: 0.8rem;
+}
+
+.play--pause{
+    font-size: 1.5rem;
+}
+
+.fa-pause{
+    display: none;
+}
+
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg)
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
