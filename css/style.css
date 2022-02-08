@@ -18,6 +18,10 @@ button{
     color: darkgray;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 .wrap{
     display: flex;
     flex-direction: column;
@@ -34,42 +38,46 @@ button{
     width: 14rem;
 }
 
+.play{
+}
+
 .music-play{
+    display: flex;
     background-color: white;
     border-radius: 0.7rem 0.7rem 0 0;
-    display: flex;
     flex-direction: column;
     padding: 1rem;
     padding-left: 3rem;
     margin-left: 3rem;
     opacity: 0.75;
     width: 6rem;
-    transition: ;
 }
 
 .progress{
     width: 6rem;
     height: 3px;
-    background-color:white;
+    background-color:darkgray;
 }
 
 .bar{
     height: 100%;
     width: 90%;
-    background-color:cornflowerblue;
+    background-color:royalblue;
 }
 
 .music-img{
     width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     border: 2px skyblue solid;
+    animation: rotate 5s ease-in-out;
+    animation-play-state: running;
 }
 
 .music-disc{
     position: absolute;
     top: -2rem;
     left: 0.5rem;
-    animation: rotate 5s ease-in-out;
 }
 
 .music-buttons{
@@ -95,16 +103,17 @@ button{
     cursor: pointer;
 }
 
-.fa-backward,
-.fa-forward{
+.prev-btn,
+.next-btn{
     font-size: 0.8rem;
 }
 
-.play--pause{
+
+.play-btn{
     font-size: 1.5rem;
 }
 
-.fa-pause{
+.pause-btn{
     display: none;
 }
 
