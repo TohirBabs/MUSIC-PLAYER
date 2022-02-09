@@ -1,4 +1,4 @@
-const musicInterface = document.querySelector('.music-play')
+const musicPlay = document.querySelector('.music-play')
 const playBtn = document.querySelector('.play-btn')
 const nextBtn = document.querySelector('.next-btn')
 const prevBtn = document.querySelector('.prev-btn')
@@ -6,12 +6,12 @@ const bar = document.querySelector('.bar')
 const audio = document.querySelector('.audio')
 const title = document.querySelector('.music-name')
 const cover = document.querySelector('.music-img')
+const progress = document.querySelector('.progress')
 
 const songs = ['cheque','woodstock','outside','peru']
 
-let songIndex  = 5
+let songIndex = 2
 
-loadSong(songs[songIndex])
 
 function loadSong(song){
     title.innerText = song 
@@ -19,8 +19,10 @@ function loadSong(song){
     cover.src = `images/${song}.jpg`
 }
 
+loadSong(songs[songIndex])
+
 function playSong() {
-    musicInterface.classList.add('play')
+    musicPlay.classList.add('play')
     playBtn.querySelector('i.fas').classList.remove('fa-play')
     playBtn.querySelector('i.fas').classList.add('fa-pause')
 
@@ -28,50 +30,30 @@ function playSong() {
 }
 
 function pauseSong() {
-    musicInterface.classList.remove('play')
+    musicPlay.classList.remove('play')
     playBtn.querySelector('i.fas').classList.remove('fa-pause')
     playBtn.querySelector('i.fas').classList.add('fa-play')
 
     audio.pause()
 }
 
-function prevSong() {
-    songIndex--
-    if (songIndex < 0) {
-        songIndex = songs.length - 1
-    }
-
-    loadSong(songs[songIndex])
-
-    playSong(
-}
-
-function nextSong() {
-    songIndex++
-    if (songIndex > songs.length - 1) {
-        songIndex = 0
-    }
-
-    loadSong(songs[songIndex])
-
-    playSong()
-}
 
 function updateProgress(e) {
     const {duration,currentTime} = e.srcElement
     const progressPercent = (currentTime/ duration) * 100
-    bar.style.width = `${progressPercent}`
+    bar.style.width = `${progressPercent}%`
 }
 
 function setProgress(e) {
     const width = this.clientWidth
     const clickX = e.offsetX
     const duration = audio.duration
+    audio.currentTime = (clickX/width) * duration
 }
 
 //Event Listeners
 playBtn.addEventListener('click', () =>{
-    const isPlaying = musicInterface.classList.contains('play')
+    const isPlaying = musicPlay.classList.contains('play')
 
     if (isPlaying) {
         pauseSong()
@@ -82,9 +64,43 @@ playBtn.addEventListener('click', () =>{
 })
 
 //change song events
-prevBtn.addEventListener('click', prevSong())
-nextBtn.addEventListener('click', nextSong())
+prevBtn.addEventListener('click', () => {
+    songIndex++
+    if (songIndex > songs.length - 1) {
+        songIndex = 0
+    }
+
+    loadSong(songs[songIndex])
+
+    playSong()
+
+    console.log(songs[songIndex])
+}
+)
+nextBtn.addEventListener('click',() => {
+    songIndex--
+    if (songIndex < 0) {
+        songIndex = songs.length - 1
+    }
+
+    loadSong(songs[songIndex])
+
+    playSong()
+    console.log(songs[songIndex])
+})
 
 audio.addEventListener('timeupdate', updateProgress)
+
+audio.addEventListener('ended',() => {
+    songIndex--
+    if (songIndex < 0) {
+        songIndex = songs.length - 1
+    }
+
+    loadSong(songs[songIndex])
+
+    playSong()
+    console.log(songs[songIndex])
+} )
 
 progress.addEventListener('click', setProgress)

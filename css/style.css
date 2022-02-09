@@ -31,6 +31,7 @@ button:hover{
 .title{
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    color: tomato;
 }
 
 .music-interface{
@@ -39,10 +40,14 @@ button:hover{
 }
 
 .play{
+    transform: translateY(0) !important;
+    transition: ease-in 700ms;
 }
 
 .music-play{
     display: flex;
+    transform: translateY(100%);
+    transition: ease-out 700ms;
     background-color: white;
     border-radius: 0.7rem 0.7rem 0 0;
     flex-direction: column;
@@ -53,16 +58,34 @@ button:hover{
     width: 6rem;
 }
 
+.music-name{
+    margin-bottom: 0.3rem;
+    color: teal;
+}
+
 .progress{
+    display: flex;
+    align-items: center;
     width: 6rem;
     height: 3px;
     background-color:darkgray;
 }
 
+.progress:hover{
+    cursor: pointer;
+}
+
 .bar{
     height: 100%;
-    width: 90%;
     background-color:royalblue;
+}
+
+.bar-head{
+    background-color:white;
+    border: 1.5px tomato solid;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
 }
 
 .music-img{
@@ -124,6 +147,16 @@ button:hover{
     }
 
     to{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg)
+    }
+
+    100%{
         transform: rotate(360deg);
     }
 }
